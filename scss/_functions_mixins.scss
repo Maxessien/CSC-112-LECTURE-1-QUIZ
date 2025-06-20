@@ -1,0 +1,41 @@
+@use 'sass:math';
+@use 'sass:map';
+
+@function rem($pxVaalue){
+    @return math.div($pxVaalue, 16) * 1rem
+};
+
+@mixin flex($align, $justify, $gap, $direction:row){
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+@mixin grid($column: auto, $row: auto, $grid-gap, $custom: 'false'){
+    display: grid;
+    gap: $grid-gap;
+    @if $custom == 'true'{
+        grid-template-columns: $column;
+        grid-template-rows: $row;
+    }@else if $custom == 'false'{
+        grid-template-columns: repeat($column, 1fr);
+        grid-template-rows: repeat($row, 1fr);
+    }@else{
+        @error($custom 'is not a valid custom value')
+    };
+};
+
+$sizes:(
+    small: rem(480),
+    medium: rem(768),
+    large: rem(1024),
+    x-large: rem(1440)
+);
+
+@mixin media($size, $target: max-width){
+    @media ($target: map.get($sizes, $size)) {
+        @content
+    }
+}
