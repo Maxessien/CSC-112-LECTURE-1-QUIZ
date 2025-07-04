@@ -5,7 +5,7 @@ if (startBtn) {
     console.log("fetching");
     startBtn.textContent = "Loading ...";
     fetch(
-      "https://raw.githubusercontent.com/Maxessien/Test-API-Fetch-/main/test.json"
+      "https://raw.githubusercontent.com/Maxessien/Test-API-Fetch-/main/success.json"
     )
       .then((res) => res.json())
       .then((data) => {
