@@ -9,7 +9,7 @@ let selectedAnswers = [];
 let allInputs;
 let currentQuestion = 0;
 let total = 0;
-let time = 1800;
+let time = 3600;
 let answers;
 
 const data = sessionStorage.getItem("quizData");
@@ -78,7 +78,7 @@ function runTimer() {
     if (time === 0) {
       clearInterval(intervalId);
       fetch(
-        "https://raw.githubusercontent.com/Maxessien/Test-API-Fetch-/main/answer.json"
+        "https://raw.githubusercontent.com/Maxessien/Test-API-Fetch-/main/succanswer.json"
       )
         .then((res) => {
           return res.json();
